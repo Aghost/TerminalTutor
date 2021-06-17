@@ -9,17 +9,13 @@ namespace TerminalTutor.App
     {
         static void Main(string[] args) {
             int points = 0;
-            StartTutorRandom(ref points);
-        }
-
-        public static void StartTutorRandom(ref int score) {
             Random rnd = new Random();
             string[] lines = File.ReadAllLines(@"./questions.md");
             lines = lines.OrderBy(x => rnd.Next()).ToArray();
 
             foreach (string line in lines) {
                 if (AskQuestion(line)) {
-                    WriteLine($"Correct! Score({++score})");
+                    WriteLine($"Correct! Score({++points})");
                 } else {
                     WriteLine("jammer joh");
                 }
@@ -34,7 +30,7 @@ namespace TerminalTutor.App
             string answer = question[1].Split(':')[0].Split(',')[e];
 
             Clear();
-            WriteLine($"{question[0]}? ({answer}, {(char)answer_e} {e})");
+            WriteLine($"{question[0]}?\t({answer}, {(char)answer_e} {e})");
 
             int enumerate = 65;
             foreach (string option in question[1].Split(':')[0].Split(',')) {
