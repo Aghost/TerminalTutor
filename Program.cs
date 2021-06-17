@@ -13,19 +13,6 @@ namespace TerminalTutor.App
             StartTutorRandom(ref points);
         }
 
-        public static void StartTutor(ref int score) {
-            System.IO.StreamReader file = new System.IO.StreamReader(@"./questions.md");
-
-            string line;
-
-            while ((line = file.ReadLine()) != null) {
-                if (AskQuestion(line)) {
-                    WriteLine($"Correct! Score({++score})");
-                    ReadLine();
-                }
-            }
-        }
-
         public static void StartTutorRandom(ref int score) {
             Random rnd = new Random();
             string[] lines = File.ReadAllLines(@"./questions.md");
