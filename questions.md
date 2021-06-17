@@ -1,4 +1,3 @@
-ben jij een aap?ja,nee:1
 Which of the following options is not a cloud computing category?NaaS,PaaS,IaaS,SaaS:0
 With CAPEX you are only responsible for the computing resources that you use. (true or false)?True,False:1
 With OPEX you are only responsible for purchasing and maintaining your computing resources. (true or false)?True,False:0
