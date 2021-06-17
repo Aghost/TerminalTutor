@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using static System.Console;
-using TerminalTutor.Data;
 
 namespace TerminalTutor.App
 {
