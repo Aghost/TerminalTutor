@@ -11,14 +11,9 @@ namespace TerminalTutor.App
             int points = 0;
             Random rnd = new Random();
             string[] lines = File.ReadAllLines(@"./questions.md");
-            lines = lines.OrderBy(x => rnd.Next()).ToArray();
 
-            foreach (string line in lines) {
-                if (AskQuestion(line)) {
-                    WriteLine($"Correct! Score({++points})");
-                } else {
-                    WriteLine("jammer joh");
-                }
+            foreach (string line in lines.OrderBy(x => rnd.Next()).ToArray()) {
+                WriteLine(AskQuestion(line) ? $"> Correct! points: {++points}" : "> Jammer joh!");
                 ReadLine();
             }
         }
@@ -30,14 +25,14 @@ namespace TerminalTutor.App
             string answer = question[1].Split(':')[0].Split(',')[e];
 
             Clear();
-            WriteLine($"{question[0]}?\t({answer}, {(char)answer_e} {e})");
+            WriteLine($"{question[0]}?\t({answer}, {(char)answer_e} {e})\n");
 
             int enumerate = 65;
             foreach (string option in question[1].Split(':')[0].Split(',')) {
                 WriteLine($"{(char)enumerate++} {option}\n");
             }
 
-            Write("Die Antwoord: ");
+            Write("> Die Antwoord: ");
             string input = ReadLine();
 
             return (input.ToLower() == answer.ToLower()) || (input.ToUpper() == ((char)(answer_e)).ToString()) ? true : false;
