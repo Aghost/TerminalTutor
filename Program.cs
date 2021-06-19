@@ -9,12 +9,14 @@ namespace TerminalTutor.App
     {
         static void Main(string[] args) {
             int points = 0;
-            Random rnd = new Random();
             string[] lines = File.ReadAllLines(@"./questions.md");
 
-            foreach (string line in lines.OrderBy(x => rnd.Next()).ToArray()) {
+            Random rnd = new Random();
+            foreach (string line in lines.OrderBy(x => rnd.Next())) {
                 WriteLine(AskQ(line) ? $"-- Correct! -- ({++points})" : $"-- Incorrect! -- ({points})");
             }
+
+            WriteLine($"{points}/{lines.Length} Correct!\nScore {10 * points / lines.Length}");
         }
 
         public static bool AskQ(string line) {
@@ -28,7 +30,7 @@ namespace TerminalTutor.App
                 WriteLine($"{(char)enumerate++}) {option}");
             }
 
-            Write("> Answer: ");
+            Write("- Answer: ");
             
             return Char.ToUpper(ReadKey(true).KeyChar) == answer ? true : false;
         }
