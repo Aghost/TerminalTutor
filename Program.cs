@@ -13,10 +13,12 @@ namespace TerminalTutor.App
 
             Random rnd = new Random();
             foreach (string line in lines.OrderBy(x => rnd.Next())) {
+                Clear();
                 WriteLine(AskQ(line) ? $"-- Correct! -- ({++points})" : $"-- Incorrect! -- ({points})");
+                ReadKey(true);
             }
 
-            WriteLine($"{points}/{lines.Length} Correct!\nScore {10 * points / lines.Length}");
+            WriteLine($"\n{points}/{lines.Length} Correct!\nScore {10 * points / lines.Length}");
         }
 
         public static bool AskQ(string line) {
